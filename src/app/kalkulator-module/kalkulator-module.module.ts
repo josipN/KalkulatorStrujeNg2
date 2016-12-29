@@ -11,9 +11,9 @@ import { HttpModule } from '@angular/http';
 import { KalkulatorModuleAPIService } from './kalkulator-module.service';
 
 // containers
-import { IzracunComponent } from './containers/izracun.component';
-import {ArhivaComponent} from './components/arhiva.component';
-import { RezultatComponent } from './containers/rezultat.component';
+import { IzracunComponent } from './containers/izracun/izracun.component';
+import {ArhivaComponent} from './components/arhiva/arhiva.component';
+import { RezultatComponent } from './containers/rezultat/rezultat.component';
 @NgModule({
   declarations: [
     IzracunComponent,

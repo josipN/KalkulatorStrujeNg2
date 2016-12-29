@@ -1,6 +1,6 @@
 
 import { Component, Input, OnInit } from '@angular/core';
-import * as models from '../models/models';
+import * as models from '../../models/models';
 
 @Component({
     selector: 'app-rezultat',
