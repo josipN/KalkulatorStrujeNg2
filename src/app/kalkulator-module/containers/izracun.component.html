@@ -1,0 +1,59 @@
+<form #f="ngForm" novalidate [formGroup]="struja" (ngSubmit)="onSubmit(f.struja)" >
+    <h1>Izracun struje</h1>
+     <div formGroupName="jeftinaStruja">
+     <h4>Jeftina struja</h4>
+      
+        <label>
+            <span>Pocetak mjeseca</span>
+            <input formControlName="pocetakMjeseca" type="number" /> kWh
+            <div 
+                class="error"
+                *ngIf="struja.get('jeftinaStruja').get('pocetakMjeseca').hasError('required')
+                   && struja.get('jeftinaStruja').get('pocetakMjeseca').touched">                   
+            Polje je obavezno.
+            </div>
+        </label>
+        <br/>
+        <label>
+            <span>Kraj mjeseca</span>
+            <input formControlName="krajMjeseca" type="number" /> kWh
+            <div 
+                class="error"
+                *ngIf="struja.get('jeftinaStruja').get('krajMjeseca').hasError('required')
+                   && struja.get('jeftinaStruja').get('krajMjeseca').touched">                   
+            Polje je obavezno.
+            </div>
+        </label>
+     </div>
+
+    <div formGroupName="skupaStruja">
+    <h4>Skupa struja</h4>
+        <label>
+            <span>Pocetak mjeseca</span>
+            <input formControlName="pocetakMjeseca" type="number" /> kWh
+            <div 
+                class="error"
+                *ngIf="struja.get('skupaStruja').get('pocetakMjeseca').hasError('required')
+                   && struja.get('skupaStruja').get('pocetakMjeseca').touched">                   
+            Polje je obavezno.
+            </div>
+        </label>
+        <br/>
+        <label>
+            <span>Kraj mjeseca</span>
+            <input formControlName="krajMjeseca" type="number" /> kWh
+            <div 
+                class="error"
+                *ngIf="struja.get('skupaStruja').get('krajMjeseca').hasError('required')
+                   && struja.get('skupaStruja').get('krajMjeseca').touched">                   
+            Polje je obavezno.
+            </div>
+        </label>
+     </div>
+     <!--<button type="submit" [disabled]="struja.invalid">Izracunaj</button>-->
+    </form>
+    
+    <div *ngIf="showResult">
+    <app-rezultat [data]="struja.value"></app-rezultat>
+  
+    </div>

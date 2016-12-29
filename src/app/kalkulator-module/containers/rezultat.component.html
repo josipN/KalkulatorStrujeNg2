@@ -1,0 +1,111 @@
+<div *ngIf="getSuccess">
+
+  <div class="calculator-result">
+
+    <h5>REZULTAT:</h5>
+    <div><strong>Ukupan iznos:<span>{{ukupanIznos}}</span></strong></div>
+    <div>Naknada za vodne usluge:<span>{{(ukupno * potrosnja).toFixed(2)}}</span></div>
+    <div>Naknada za održavanje sustava:<span>{{(iznosIzProfilaPdv + iznosIzProfila).toFixed(2)}}</span></div>
+  </div>
+  <span><b>STRUKTURA CIJENE:</b></span>
+  <table>
+    <tr>
+      <th>R.Br.</th>
+      <th>OPIS</th>
+      <th>IZNOS (kn)</th>
+    </tr>
+
+    <!--<tr class="table-blue-row">
+      <td></td>
+      <td>OPOREZIVI DIO</td>
+      <td>{{(oporeziviDio * potrosnja).toFixed(2)}}</td>
+    </tr>-->
+
+    <tr>
+      <td>1</td>
+      <td>usluga vodoopskrbe</td>
+      <td>{{(obracun.vodoopskrba * potrosnja).toFixed(2)}}</td>
+    </tr>
+
+    <tr>
+      <td>2</td>
+      <td>usluga odvodnje</td>
+      <td>{{(obracun.odvodnje * potrosnja).toFixed(2)}}</td>
+    </tr>
+
+    <tr>
+      <td>3</td>
+      <td>usluga pročišćavanja</td>
+      <td>{{(obracun.prociscavanjeOtpadnihVoda * potrosnja).toFixed(2)}}</td>
+    </tr>
+
+    <tr>
+      <td>4</td>
+      <td>naknada za održavanje sustava</td>
+      <td>{{(iznosIzProfila).toFixed(2)}}</td>
+    </tr>
+    <tr class="table-blue-row">
+      <td>A</td>
+      <td>POREZNA OSNOVNICA(1+2+3+4)</td>
+      <td>{{(oporeziviDio*potrosnja + iznosIzProfila).toFixed(2)}}</td>
+    </tr>
+
+    <tr class="table-blue-row">
+      <td>B</td>
+      <td>PDV 13%</td>
+      <td>{{(oporeziviDioPdv * potrosnja + iznosIzProfilaPdv).toFixed(2)}}</td>
+    </tr>
+
+    <!--<tr class="table-blue-row">
+      <td>NEOPOREZIVI DIO</td>
+      <td>{{(neporeziviDio * potrosnja).toFixed(2)}}</td>
+    </tr>-->
+
+    <tr>
+      <td>5</td>
+      <td>naknada za razvoj</td>
+      <td>{{(obracun.naknada.zaRazvoj*potrosnja).toFixed(2)}}</td>
+    </tr>
+
+    <tr>
+      <td>6</td>
+      <td>naknada za rješavanje imovinskih odnosa</td>
+      <td>{{(obracun.naknada.zaRijesvanjeImovPravnihOdnosa*potrosnja).toFixed(2)}}</td>
+    </tr>
+
+    <tr>
+      <td>7</td>
+      <td>naknada za razvoj za EKO projekt</td>
+      <td>{{(obracun.naknada.zaRazvojEkoProjekta*potrosnja).toFixed(2)}}</td>
+    </tr>
+
+    <tr>
+      <td>8</td>
+      <td>naknada za korištenje voda</td>
+      <td>{{(obracun.naknada.zaKoristenjeVoda*potrosnja).toFixed(2)}}</td>
+    </tr>
+
+    <tr>
+      <td>9</td>
+      <td>naknada za zaštitu voda</td>
+      <td>{{(obracun.naknada.zaZastituVoda*potrosnja).toFixed(2)}}</td>
+    </tr>
+    <tr class="table-blue-row">
+      <td>C</td>
+      <td>NEOPOREZIVE NAKNADE (5+6+7+8+9)</td>
+      <td>{{(neporeziviDio * potrosnja).toFixed(2)}}</td>
+    </tr>
+
+    <tr style="background-color: #2196f3;color: #fff;">
+      <td></td>
+      <td>UKUPNO (A+B+C)</td>
+      <td>{{ukupanIznos}}</td>
+   
+    </tr>
+
+  </table>
+</div>
+<div *ngIf="!getSuccess">
+  Odabrana kombinacija parametara ne postoji u cjeniku. Molim vas provjerite unesene podatke i ponovite izračun.
+</div>
+<button type="button" (click)="sendToServer()"> Spremi podatke</button>
